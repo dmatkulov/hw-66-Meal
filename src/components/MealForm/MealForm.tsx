@@ -42,25 +42,31 @@ const MealForm: React.FC<Props> = ({onSubmit, existingMeal = initialState, isEdi
   
   return (
     <form onSubmit={onFormSubmit}>
-      <h2>{isEdit ? 'Edit current meal' : 'Add new meal'}</h2>
-      <div className="form-group">
-        <label htmlFor="time">Select time</label>
+      <h2
+        className="mb-3"
+      >
+        {isEdit ? 'Edit current meal' : 'Add new meal'}
+      </h2>
+      <div className="form-group mb-3">
         <select
+          required
           name="time"
           id="time"
           className="form-select" aria-label="Default select example"
           onChange={changeMeal}
           value={meal.time}
         >
-          <option value="breakfast">Breakfast</option>
-          <option value="snack">Snack</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
+          <option value="" disabled>Select time</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Snack">Snack</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
         </select>
       </div>
-      <div className="form-group">
+      <div className="form-group mb-3">
         <label htmlFor="description">Meal description</label>
         <textarea
+          required
           name="description"
           id="description"
           className="form-control"
@@ -68,9 +74,10 @@ const MealForm: React.FC<Props> = ({onSubmit, existingMeal = initialState, isEdi
           value={meal.description}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group mb-3">
         <label htmlFor="description">Calories</label>
         <input
+          required
           type="number"
           name="calories"
           id="calories"
