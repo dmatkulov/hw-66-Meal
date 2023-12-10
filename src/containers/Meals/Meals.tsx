@@ -63,12 +63,14 @@ const Meals: React.FC = () => {
     await fetchMeals();
   };
   
+  const sortedMeals = mealList.meals.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  
   return (
     <div>
       <TotalCalories totalKcal={mealList.totalCalories}/>
       {loading ? <Spinner/> : (
         <CardItem
-          meals={mealList.meals}
+          meals={sortedMeals}
           onDelete={deleteMeal}
         />
       )}

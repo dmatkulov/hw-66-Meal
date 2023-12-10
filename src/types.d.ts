@@ -1,12 +1,14 @@
 export interface Meal {
   id: string;
   time: string;
+  date: string;
   description: string;
   calories: number;
 }
 
 export interface MealMutation {
   time: string;
+  date: string;
   description: string;
   calories: string;
 }

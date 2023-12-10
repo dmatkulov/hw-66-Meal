@@ -4,6 +4,7 @@ import ButtonSpinner from "../Spinner/ButtonSpinner";
 
 const initialState: MealMutation = {
   time: '',
+  date: '',
   description: '',
   calories: '',
 };
@@ -63,6 +64,18 @@ const MealForm: React.FC<Props> = ({onSubmit, existingMeal = initialState, isEdi
           <option value="Lunch">Lunch</option>
           <option value="Dinner">Dinner</option>
         </select>
+      </div>
+      <div className="form-group mb-3">
+        <label htmlFor="date">Date</label>
+        <input
+          required
+          type="date"
+          name="date"
+          id="date"
+          className="form-control"
+          onChange={changeMeal}
+          value={meal.date}
+        />
       </div>
       <div className="form-group mb-3">
         <label htmlFor="description">Meal description</label>
