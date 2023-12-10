@@ -5,7 +5,6 @@ export interface Meal {
   calories: number;
 }
 
-
 export interface MealMutation {
   time: string;
   description: string;
@@ -18,11 +17,7 @@ export interface ApiMeals {
   [id: string]: ApiMeal;
 }
 
-
-export interface MealTotal {
+export interface MealList {
   meals: Meal[]
-}
-
-export interface Meals extends MealTotal{
   totalCalories: number;
 }

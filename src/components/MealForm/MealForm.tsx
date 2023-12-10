@@ -17,10 +17,11 @@ interface Props {
 
 const MealForm: React.FC<Props> = ({onSubmit, existingMeal = initialState, isEdit = false, isLoading = false}) => {
   const [meal, setMeal] = useState<MealMutation>(existingMeal);
+  const [isInput, setIsInput] = useState(false);
   
   const changeMeal = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const {name, value} = event.target;
-    
+    setIsInput(true);
     setMeal((prevState) => ({
       ...prevState,
       [name]: value
@@ -86,7 +87,7 @@ const MealForm: React.FC<Props> = ({onSubmit, existingMeal = initialState, isEdi
           value={meal.calories}
         />
       </div>
-      <button type="submit" className="btn btn-primary" disabled={isLoading}>
+      <button type="submit" className={isInput ? 'btn btn-primary' : 'btn btn-secondary'} disabled={isLoading}>
         {isLoading && <ButtonSpinner/>}
         {isEdit ? 'Edit' : 'Add'}
       </button>

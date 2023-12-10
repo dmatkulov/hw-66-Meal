@@ -2,7 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import AddMealForm from "./containers/AddMealForm/AddMealForm";
 import Layout from "./components/Layout/Layout";
 import EditMealForm from "./containers/EditMealForm/EditMealForm";
-import Meals from "./containers/Cards/Meals";
+import Meals from "./containers/Meals/Meals";
 
 function App() {
   
