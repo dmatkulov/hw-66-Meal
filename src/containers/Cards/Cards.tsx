@@ -3,10 +3,12 @@ import CardItem from "../../components/CardItem/CardItem";
 import {Meal, MealList} from "../../types";
 import axiosApi from "../../axiosApi";
 import Spinner from "../../components/Spinner/Spinner";
+import TotalCalories from "../../components/TotalCalories/TotalCalories";
 
 const Cards: React.FC = () => {
   const [meals, setMeals] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(false);
+  const [totalKcal, setTotalKcal] = useState(0);
   
   const fetchMeals = useCallback(async () => {
     try {
@@ -25,6 +27,10 @@ const Cards: React.FC = () => {
             id
           };
         });
+        const totalKcal = newMeals.reduce((sum, meal) => {
+          return sum += meal.calories;
+        }, 0);
+        setTotalKcal(totalKcal);
         setMeals(newMeals);
       }
       
@@ -39,6 +45,7 @@ const Cards: React.FC = () => {
   
   return (
     <div>
+      <TotalCalories totalKcal={totalKcal}/>
       {loading ? <Spinner/> : (
         meals.map((meal) => (
           <CardItem key={meal.id} meal={meal}/>

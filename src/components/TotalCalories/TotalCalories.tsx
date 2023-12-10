@@ -1,11 +1,14 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 
-const TotalCalories: React.FC = () => {
+interface Props {
+  totalKcal: number;
+}
+const TotalCalories: React.FC<Props> = ({totalKcal}) => {
   const navigate = useNavigate();
   return (
     <div>
-      Total calories: 900kcal
+      Total calories: {totalKcal} Kcal
       <button onClick={() => navigate('/add-meal')}>Add new meal</button>
     </div>
   );
